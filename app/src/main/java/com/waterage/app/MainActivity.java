@@ -28,6 +28,7 @@ public class MainActivity extends AppCompatActivity {
 
         LinearLayout btnWaterAlarm = findViewById(R.id.btnWaterAlarm);
         LinearLayout btnAgeCalc = findViewById(R.id.btnAgeCalc);
+        LinearLayout btnBakiHisab = findViewById(R.id.btnBakiHisab);
 
         btnWaterAlarm.setOnClickListener(v -> {
             Intent intent = new Intent(MainActivity.this, WaterAlarmActivity.class);
@@ -36,6 +37,11 @@ public class MainActivity extends AppCompatActivity {
 
         btnAgeCalc.setOnClickListener(v -> {
             Intent intent = new Intent(MainActivity.this, AgeCalculatorActivity.class);
+            startActivity(intent);
+        });
+
+        btnBakiHisab.setOnClickListener(v -> {
+            Intent intent = new Intent(MainActivity.this, BakiHisabActivity.class);
             startActivity(intent);
         });
     }
