@@ -41,7 +41,7 @@ public class MainActivity extends AppCompatActivity {
         });
 
         btnBakiHisab.setOnClickListener(v -> {
-            Intent intent = new Intent(MainActivity.this, BakiHisabActivity.class);
+            Intent intent = new Intent(MainActivity.this, LoginActivity.class);
             startActivity(intent);
         });
     }
