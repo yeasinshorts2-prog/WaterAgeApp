@@ -31,6 +31,10 @@
         <activity
             android:name=".WaterAlarmActivity"
             android:exported="false" />
+        
+        <activity
+            android:name=".BakiHisabActivity"
+            android:exported="false" />
 
         <activity
             android:name=".AgeCalculatorActivity"
