@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/bg_green_glass"
+    android:gravity="center"
+    android:orientation="vertical"
+    android:padding="24dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/bg_glass_card"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:padding="24dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="🔐 অনলাইন ব্যাকআপ লগইন"
+            android:textColor="#2EF2A1"
+            android:textSize="22sp"
+            android:textStyle="bold"
+            android:layout_marginBottom="8dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="জিমেইল দিয়ে লগইন করলে আপনার দোকানের সব হিসাব অনলাইনে সেভ থাকবে।"
+            android:textColor="#A7F3D0"
+            android:textSize="13sp"
+            android:gravity="center"
+            android:layout_marginBottom="20dp" />
+
+        <EditText
+            android:id="@+id/etEmail"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="আপনার জিমেইল লিখুন"
+            android:inputType="textEmailAddress"
+            android:textColor="#FFFFFF"
+            android:textColorHint="#80FFFFFF"
+            android:background="@drawable/bg_glass_card"
+            android:padding="14dp"
+            android:layout_marginBottom="12dp" />
+
+        <EditText
+            android:id="@+id/etPassword"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="পাসওয়ার্ড দিন (কমপক্ষে ৬ সংখ্যা)"
+            android:inputType="textPassword"
+            android:textColor="#FFFFFF"
+            android:textColorHint="#80FFFFFF"
+            android:background="@drawable/bg_glass_card"
+            android:padding="14dp"
+            android:layout_marginBottom="18dp" />
+
+        <ProgressBar
+            android:id="@+id/progressBarLogin"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:visibility="gone"
+            android:layout_marginBottom="12dp" />
+
+        <Button
+            android:id="@+id/btnLogin"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="লগইন করুন"
+            android:textColor="#041812"
+            android:textStyle="bold"
+            android:backgroundTint="#2EF2A1"
+            android:padding="12dp"
+            android:layout_marginBottom="10dp" />
+
+        <Button
+            android:id="@+id/btnRegister"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="নতুন অ্যাকাউন্ট তৈরি করুন"
+            android:textColor="#FFFFFF"
+            android:backgroundTint="#1E5644"
+            android:padding="12dp" />
+
+    </LinearLayout>
+
+</LinearLayout>
