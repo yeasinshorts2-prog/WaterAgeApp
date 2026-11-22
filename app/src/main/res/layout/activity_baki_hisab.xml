@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/bg_green_glass"
+    android:padding="16dp">
+
+    <TextView
+        android:id="@+id/tvBakiHeader"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="📒 দোকানের বাকি হিসাব"
+        android:textColor="#FFFFFF"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        android:gravity="center"
+        android:paddingBottom="12dp" />
+
+    <!-- মোট বাকি দেখানোর কার্ড -->
+    <LinearLayout
+        android:id="@+id/layoutTotalBaki"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tvBakiHeader"
+        android:background="@drawable/bg_glass_card"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:padding="16dp"
+        android:layout_marginBottom="14dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="বর্তমান মোট বাকি"
+            android:textColor="#A7F3D0"
+            android:textSize="14sp" />
+
+        <TextView
+            android:id="@+id/tvTotalBaki"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:text="0 টাকা"
+            android:textColor="#FF6B6B"
+            android:textSize="28sp"
+            android:textStyle="bold" />
+    </LinearLayout>
+
+    <ListView
+        android:id="@+id/listViewBaki"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/layoutTotalBaki"
+        android:divider="@android:color/transparent"
+        android:dividerHeight="10dp"
+        android:paddingBottom="80dp"
+        android:clipToPadding="false" />
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fabAddBaki"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_margin="16dp"
+        android:contentDescription="নতুন হিসাব যোগ করুন"
+        android:src="@android:drawable/ic_input_add"
+        android:backgroundTint="#2EF2A1" />
+
+</RelativeLayout>
