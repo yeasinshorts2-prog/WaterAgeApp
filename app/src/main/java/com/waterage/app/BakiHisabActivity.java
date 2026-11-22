@@ -1,7 +1,7 @@
 package com.waterage.app;
 
 import android.app.AlertDialog;
-import android.content.SharedPreferences;
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -15,45 +15,108 @@ import android.widget.RadioButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
-import com.google.gson.Gson;
-import com.google.gson.reflect.TypeToken;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
-import java.lang.reflect.Type;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Date;
 import java.util.List;
 import java.util.Locale;
 
 public class BakiHisabActivity extends AppCompatActivity {
 
-    private static final String PREFS_NAME = "BakiHisabPrefs";
-    private static final String KEY_BAKI_LIST = "baki_list";
-
     private List<BakiModel> bakiList = new ArrayList<>();
     private BakiAdapter adapter;
-    private Gson gson = new Gson();
     private TextView tvTotalBaki;
+    private DatabaseReference dbRef;
+    private FirebaseAuth mAuth;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_baki_hisab);
 
+        mAuth = FirebaseAuth.getInstance();
+        FirebaseUser currentUser = mAuth.getCurrentUser();
+
+        // লগইন করা না থাকলে লগইন পেজে পাঠাবে
+        if (currentUser == null) {
+            startActivity(new Intent(this, LoginActivity.class));
+            finish();
+            return;
+        }
+
+        // প্রতিটি ইউজারের জন্য আলাদা অনলাইন ডেটাবেজ ফোল্ডার
+        dbRef = FirebaseDatabase.getInstance()
+                .getReference("users")
+                .child(currentUser.getUid())
+                .child("baki_list");
+
+        TextView tvBakiHeader = findViewById(R.id.tvBakiHeader);
         tvTotalBaki = findViewById(R.id.tvTotalBaki);
         ListView listView = findViewById(R.id.listViewBaki);
         FloatingActionButton fabAddBaki = findViewById(R.id.fabAddBaki);
 
-        loadBakiList();
-        updateTotalBaki();
-
         adapter = new BakiAdapter();
         listView.setAdapter(adapter);
 
+        // হেডারে ক্লিক করলে লগআউট অপশন দেখাবে
+        tvBakiHeader.setOnClickListener(v -> showLogoutDialog(currentUser.getEmail()));
+
         fabAddBaki.setOnClickListener(v -> showAddBakiDialog());
+
+        // অনলাইন থেকে সব হিসাব অটোমেটিক লোড করা
+        loadBakiFromCloud();
+    }
+
+    private void showLogoutDialog(String email) {
+        new AlertDialog.Builder(this)
+                .setTitle("অ্যাকাউন্ট")
+                .setMessage("লগইন করা জিমেইল: " + email + "\n\nআপনি কি লগআউট করতে চান?")
+                .setPositiveButton("লগআউট", (dialog, which) -> {
+                    mAuth.signOut();
+                    Toast.makeText(this, "লগআউট সফল হয়েছে", Toast.LENGTH_SHORT).show();
+                    startActivity(new Intent(this, LoginActivity.class));
+                    finish();
+                })
+                .setNegativeButton("থাক", null)
+                .show();
+    }
+
+    private void loadBakiFromCloud() {
+        dbRef.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                bakiList.clear();
+                for (DataSnapshot ds : snapshot.getChildren()) {
+                    BakiModel item = ds.getValue(BakiModel.class);
+                    if (item != null) {
+                        item.key = ds.getKey();
+                        bakiList.add(item);
+                    }
+                }
+                // নতুন হিসাব সবার উপরে দেখানোর জন্য উল্টে দেওয়া
+                Collections.reverse(bakiList);
+                updateTotalBaki();
+                adapter.notifyDataSetChanged();
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+                Toast.makeText(BakiHisabActivity.this, "ডেটা লোড করতে সমস্যা হয়েছে!", Toast.LENGTH_SHORT).show();
+            }
+        });
     }
 
     private void showAddBakiDialog() {
@@ -84,14 +147,16 @@ public class BakiHisabActivity extends AppCompatActivity {
 
                     boolean isPaid = rbJoma.isChecked();
                     String currentDate = new SimpleDateFormat("dd/MM/yyyy", Locale.getDefault()).format(new Date());
-                    int id = (int) (System.currentTimeMillis() % Integer.MAX_VALUE);
+                    String key = dbRef.push().getKey();
 
-                    BakiModel model = new BakiModel(id, title, amount, currentDate, isPaid);
-                    bakiList.add(0, model); // নতুন হিসাব সবার উপরে দেখাবে
-                    saveBakiList();
-                    updateTotalBaki();
-                    adapter.notifyDataSetChanged();
-                    Toast.makeText(this, "হিসাব সেভ হয়েছে!", Toast.LENGTH_SHORT).show();
+                    if (key != null) {
+                        BakiModel model = new BakiModel(key, title, amount, currentDate, isPaid);
+                        dbRef.child(key).setValue(model)
+                                .addOnSuccessListener(aVoid ->
+                                        Toast.makeText(this, "অনলাইনে হিসাব সেভ হয়েছে!", Toast.LENGTH_SHORT).show())
+                                .addOnFailureListener(e ->
+                                        Toast.makeText(this, "সেভ হয়নি, ইন্টারনেট চেক করুন!", Toast.LENGTH_SHORT).show());
+                    }
                 })
                 .setNegativeButton("বাতিল", null)
                 .show();
@@ -113,26 +178,9 @@ public class BakiHisabActivity extends AppCompatActivity {
 
         tvTotalBaki.setText(formattedAmount + " টাকা");
         if (total > 0) {
-            tvTotalBaki.setTextColor(Color.parseColor("#FF6B6B")); // লাল (বাকি আছে)
+            tvTotalBaki.setTextColor(Color.parseColor("#FF6B6B"));
         } else {
-            tvTotalBaki.setTextColor(Color.parseColor("#2EF2A1")); // সবুজ (বাকি নেই বা জমা আছে)
-        }
-    }
-
-    private void saveBakiList() {
-        SharedPreferences prefs = getSharedPreferences(PREFS_NAME, MODE_PRIVATE);
-        prefs.edit().putString(KEY_BAKI_LIST, gson.toJson(bakiList)).apply();
-    }
-
-    private void loadBakiList() {
-        SharedPreferences prefs = getSharedPreferences(PREFS_NAME, MODE_PRIVATE);
-        String json = prefs.getString(KEY_BAKI_LIST, null);
-        if (json != null) {
-            Type type = new TypeToken<ArrayList<BakiModel>>() {}.getType();
-            List<BakiModel> loaded = gson.fromJson(json, type);
-            if (loaded != null) {
-                bakiList = loaded;
-            }
+            tvTotalBaki.setTextColor(Color.parseColor("#2EF2A1"));
         }
     }
 
@@ -149,7 +197,7 @@ public class BakiHisabActivity extends AppCompatActivity {
 
         @Override
         public long getItemId(int position) {
-            return bakiList.get(position).id;
+            return position;
         }
 
         @Override
@@ -182,11 +230,11 @@ public class BakiHisabActivity extends AppCompatActivity {
             }
 
             btnDelete.setOnClickListener(v -> {
-                bakiList.remove(position);
-                saveBakiList();
-                updateTotalBaki();
-                notifyDataSetChanged();
-                Toast.makeText(BakiHisabActivity.this, "হিসাব মুছে ফেলা হয়েছে", Toast.LENGTH_SHORT).show();
+                if (item.key != null) {
+                    dbRef.child(item.key).removeValue()
+                            .addOnSuccessListener(aVoid ->
+                                    Toast.makeText(BakiHisabActivity.this, "হিসাব মুছে ফেলা হয়েছে", Toast.LENGTH_SHORT).show());
+                }
             });
 
             return convertView;
