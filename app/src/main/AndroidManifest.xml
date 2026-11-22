@@ -10,6 +10,7 @@
     <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
     <uses-permission android:name="android.permission.READ_MEDIA_AUDIO" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" android:maxSdkVersion="32" />
+    <uses-permission android:name="android.permission.INTERNET" />
 
     <application
         android:allowBackup="true"
@@ -34,6 +35,10 @@
         
         <activity
             android:name=".BakiHisabActivity"
+            android:exported="false" />
+
+        <activity
+            android:name=".LoginActivity"
             android:exported="false" />
 
         <activity
