@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "412212366902",
+    "project_id": "waterageapp",
+    "storage_bucket": "waterageapp.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:412212366902:android:05c5e9efffed9a9f269297",
+        "android_client_info": {
+          "package_name": "com.waterage.app"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBR15rpjwKxTRTL5CZoCE6q3VujSNUI3XM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
