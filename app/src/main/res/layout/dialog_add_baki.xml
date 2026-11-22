@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="#06221A"
+    android:orientation="vertical"
+    android:padding="18dp">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="নতুন হিসাব যোগ করুন"
+        android:textColor="#2EF2A1"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:gravity="center"
+        android:layout_marginBottom="14dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="দোকানের নাম বা মালের বিবরণ:"
+        android:textColor="#A7F3D0"
+        android:textSize="14sp" />
+
+    <EditText
+        android:id="@+id/etBakiTitle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="যেমন: চাল, তেল বা করিমের দোকান"
+        android:textColor="#FFFFFF"
+        android:textColorHint="#80FFFFFF"
+        android:background="@drawable/bg_glass_card"
+        android:padding="12dp"
+        android:layout_marginTop="4dp"
+        android:layout_marginBottom="12dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="টাকার পরিমাণ:"
+        android:textColor="#A7F3D0"
+        android:textSize="14sp" />
+
+    <EditText
+        android:id="@+id/etBakiAmount"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="যেমন: 500"
+        android:inputType="numberDecimal"
+        android:textColor="#FFFFFF"
+        android:textColorHint="#80FFFFFF"
+        android:background="@drawable/bg_glass_card"
+        android:padding="12dp"
+        android:layout_marginTop="4dp"
+        android:layout_marginBottom="14dp" />
+
+    <RadioGroup
+        android:id="@+id/rgBakiType"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center">
+
+        <RadioButton
+            android:id="@+id/rbBaki"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="বাকি নিলাম (+)"
+            android:textColor="#FF6B6B"
+            android:buttonTint="#FF6B6B"
+            android:checked="true"
+            android:layout_marginEnd="16dp" />
+
+        <RadioButton
+            android:id="@+id/rbJoma"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="জমা দিলাম (-)"
+            android:textColor="#2EF2A1"
+            android:buttonTint="#2EF2A1" />
+    </RadioGroup>
+
+</LinearLayout>
