@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/bg_green_glass"
+    android:gravity="center"
+    android:orientation="vertical"
+    android:padding="28dp">
+
+    <ImageView
+        android:layout_width="110dp"
+        android:layout_height="110dp"
+        android:src="@drawable/ic_water_logo"
+        android:layout_marginBottom="24dp" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/bg_glass_card"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:padding="24dp"
+        android:layout_marginBottom="40dp">
+
+        <TextView
+            android:id="@+id/tvRingMessage"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="পানি খাওয়ার সময় হয়ে গেছে, এখন এক গ্লাস পানি খান"
+            android:textColor="#FFFFFF"
+            android:textSize="26sp"
+            android:textStyle="bold"
+            android:gravity="center"
+            android:lineSpacingExtra="6dp" />
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/btnStopAlarm"
+        android:layout_width="match_parent"
+        android:layout_height="64dp"
+        android:backgroundTint="#FF3B30"
+        android:text="অ্যালার্ম বন্ধ করুন"
+        android:textColor="#FFFFFF"
+        android:textSize="20sp"
+        android:textStyle="bold" />
+
+</LinearLayout>

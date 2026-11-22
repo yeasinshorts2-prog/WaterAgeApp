@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="Theme.WaterAgeApp" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+        <item name="colorPrimary">#2EF2A1</item>
+        <item name="colorPrimaryVariant">#0E4B38</item>
+        <item name="colorOnPrimary">#041812</item>
+        <item name="android:statusBarColor">#06221A</item>
+        <item name="android:navigationBarColor">#041812</item>
+    </style>
+</resources>

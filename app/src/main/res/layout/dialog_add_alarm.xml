@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="#06221A"
+    android:padding="16dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="নতুন অ্যালার্ম সেট করুন"
+            android:textColor="#2EF2A1"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:gravity="center"
+            android:layout_marginBottom="10dp" />
+
+        <!-- সময় সিলেক্ট করার ঘড়ি -->
+        <TimePicker
+            android:id="@+id/timePicker"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:timePickerMode="spinner"
+            android:theme="@android:style/Theme.Holo.Dialog" />
+
+        <!-- মেসেজ লেখার ঘর -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="অ্যালার্ম মেসেজ:"
+            android:textColor="#A7F3D0"
+            android:textSize="14sp"
+            android:layout_marginTop="8dp" />
+
+        <EditText
+            android:id="@+id/etAlarmMessage"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="পানি খাওয়ার সময় হয়ে গেছে, এখন এক গ্লাস পানি খান"
+            android:textColor="#FFFFFF"
+            android:textColorHint="#80FFFFFF"
+            android:background="@drawable/bg_glass_card"
+            android:padding="12dp"
+            android:layout_marginTop="4dp" />
+
+        <!-- রিংটোন সিলেক্ট করার বাটন -->
+        <Button
+            android:id="@+id/btnPickRingtone"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="🎵 ফোন থেকে রিংটোন সিলেক্ট করুন"
+            android:backgroundTint="#0E4B38"
+            android:textColor="#2EF2A1"
+            android:layout_marginTop="12dp" />
+
+        <TextView
+            android:id="@+id/tvSelectedRingtone"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="রিংটোন: ডিফল্ট অ্যালার্ম"
+            android:textColor="#A7F3D0"
+            android:textSize="12sp"
+            android:gravity="center"
+            android:layout_marginTop="4dp" />
+
+        <!-- ভাইব্রেশন অপশন -->
+        <CheckBox
+            android:id="@+id/cbVibrate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="ভাইব্রেশন চালু রাখুন"
+            android:textColor="#FFFFFF"
+            android:checked="true"
+            android:buttonTint="#2EF2A1"
+            android:layout_marginTop="10dp" />
+
+        <!-- দিন সিলেক্ট করার অপশন -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="কোন কোন দিন বাজবে (না দিলে প্রতিদিন বাজবে):"
+            android:textColor="#A7F3D0"
+            android:textSize="13sp"
+            android:layout_marginTop="10dp" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center"
+            android:layout_marginTop="6dp">
+
+            <CheckBox android:id="@+id/cbSat" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="শনি" android:textColor="#FFFFFF" android:buttonTint="#2EF2A1" android:textSize="12sp" />
+            <CheckBox android:id="@+id/cbSun" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="রবি" android:textColor="#FFFFFF" android:buttonTint="#2EF2A1" android:textSize="12sp" />
+            <CheckBox android:id="@+id/cbMon" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="সোম" android:textColor="#FFFFFF" android:buttonTint="#2EF2A1" android:textSize="12sp" />
+            <CheckBox android:id="@+id/cbTue" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="মঙ্গল" android:textColor="#FFFFFF" android:buttonTint="#2EF2A1" android:textSize="12sp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center">
+
+            <CheckBox android:id="@+id/cbWed" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="বুধ" android:textColor="#FFFFFF" android:buttonTint="#2EF2A1" android:textSize="12sp" />
+            <CheckBox android:id="@+id/cbThu" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="বৃহঃ" android:textColor="#FFFFFF" android:buttonTint="#2EF2A1" android:textSize="12sp" />
+            <CheckBox android:id="@+id/cbFri" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="শুক্র" android:textColor="#FFFFFF" android:buttonTint="#2EF2A1" android:textSize="12sp" />
+        </LinearLayout>
+
+    </LinearLayout>
+</ScrollView>

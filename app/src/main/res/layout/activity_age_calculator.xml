@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/bg_green_glass"
+    android:padding="20dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:gravity="center_horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="🎂 বয়স ক্যালকুলেটর"
+            android:textColor="#FFFFFF"
+            android:textSize="26sp"
+            android:textStyle="bold"
+            android:layout_marginBottom="24dp" />
+
+        <!-- জন্ম তারিখ সিলেক্ট করার বক্স -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/bg_glass_card"
+            android:orientation="vertical"
+            android:padding="16dp"
+            android:layout_marginBottom="16dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="জন্ম তারিখ:"
+                android:textColor="#A7F3D0"
+                android:textSize="14sp" />
+
+            <Button
+                android:id="@+id/btnBirthDate"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="তারিখ সিলেক্ট করুন"
+                android:backgroundTint="#0E4B38"
+                android:textColor="#FFFFFF"
+                android:textSize="16sp"
+                android:layout_marginTop="6dp" />
+        </LinearLayout>
+
+        <!-- বর্তমান তারিখ সিলেক্ট করার বক্স -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/bg_glass_card"
+            android:orientation="vertical"
+            android:padding="16dp"
+            android:layout_marginBottom="20dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="বর্তমান তারিখ:"
+                android:textColor="#A7F3D0"
+                android:textSize="14sp" />
+
+            <Button
+                android:id="@+id/btnCurrentDate"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="আজকের তারিখ"
+                android:backgroundTint="#0E4B38"
+                android:textColor="#FFFFFF"
+                android:textSize="16sp"
+                android:layout_marginTop="6dp" />
+        </LinearLayout>
+
+        <!-- হিসাব করার বাটন -->
+        <Button
+            android:id="@+id/btnCalculateAge"
+            android:layout_width="match_parent"
+            android:layout_height="56dp"
+            android:text="বয়স হিসাব করুন"
+            android:backgroundTint="#2EF2A1"
+            android:textColor="#041812"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:layout_marginBottom="24dp" />
+
+        <!-- ফলাফল দেখানোর কার্ড -->
+        <LinearLayout
+            android:id="@+id/layoutAgeResult"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/bg_glass_card"
+            android:orientation="vertical"
+            android:gravity="center"
+            android:padding="22dp"
+            android:visibility="gone">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="আপনার বর্তমান বয়স"
+                android:textColor="#A7F3D0"
+                android:textSize="16sp" />
+
+            <TextView
+                android:id="@+id/tvAgeYMD"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="০ বছর, ০ মাস, ০ দিন"
+                android:textColor="#FFFFFF"
+                android:textSize="24sp"
+                android:textStyle="bold"
+                android:gravity="center"
+                android:layout_marginTop="10dp" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="#402EF2A1"
+                android:layout_marginVertical="16dp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="সব মিলিয়ে মোট দিন:"
+                android:textColor="#A7F3D0"
+                android:textSize="15sp" />
+
+            <TextView
+                android:id="@+id/tvTotalDays"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="০ দিন"
+                android:textColor="#2EF2A1"
+                android:textSize="28sp"
+                android:textStyle="bold"
+                android:layout_marginTop="6dp" />
+        </LinearLayout>
+
+    </LinearLayout>
+</ScrollView>

@@ -1,0 +1,21 @@
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="108dp"
+    android:height="108dp"
+    android:viewportWidth="108"
+    android:viewportHeight="108">
+    
+    <!-- সবুজ ব্যাকগ্রাউন্ড বৃত্ত -->
+    <path
+        android:fillColor="#0D3B2E"
+        android:pathData="M54,4 A50,50 0 1,1 53.99,4 Z" />
+        
+    <!-- জলের ফোঁটা (Water Drop) -->
+    <path
+        android:fillColor="#2EF2A1"
+        android:pathData="M54,20 C54,20 28,50 28,66 C28,80.36 39.64,92 54,92 C68.36,92 80,80.36 80,66 C80,50 54,20 54,20 Z" />
+        
+    <!-- গ্লাসের মতো চকচকে ভাব (Highlight) -->
+    <path
+        android:fillColor="#80FFFFFF"
+        android:pathData="M43,58 C40,63 40,70 44,75 C42,69 43,63 46,59 Z" />
+</vector>
