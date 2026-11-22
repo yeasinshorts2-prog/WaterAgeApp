@@ -1,100 +1,115 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/my_bg"
-    android:gravity="center"
-    android:orientation="vertical"
-    android:padding="24dp">
+    android:background="#041812">
 
-    <!-- বড় ঘড়ির কার্ড -->
+    <!-- হালকা ব্যাকগ্রাউন্ড ছবি -->
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:src="@drawable/my_bg"
+        android:scaleType="centerCrop"
+        android:alpha="0.35" />
+
+    <!-- মূল কন্টেন্ট (ঘড়ি ও বাটন) -->
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@drawable/bg_glass_card"
+        android:layout_height="match_parent"
         android:gravity="center"
         android:orientation="vertical"
-        android:padding="30dp"
-        android:layout_marginBottom="40dp">
+        android:padding="24dp">
 
-        <TextClock
-            android:id="@+id/textClockTime"
-            android:layout_width="wrap_content"
+        <!-- বড় ঘড়ির কার্ড -->
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:format12Hour="hh:mm:ss a"
-            android:format24Hour="HH:mm:ss"
-            android:textColor="#FFFFFF"
-            android:textSize="42sp"
-            android:textStyle="bold" />
+            android:background="@drawable/bg_glass_card"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:padding="30dp"
+            android:layout_marginBottom="40dp">
 
-        <TextClock
-            android:id="@+id/textClockDate"
-            android:layout_width="wrap_content"
+            <TextClock
+                android:id="@+id/textClockTime"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:format12Hour="hh:mm:ss a"
+                android:format24Hour="HH:mm:ss"
+                android:textColor="#FFFFFF"
+                android:textSize="42sp"
+                android:textStyle="bold" />
+
+            <TextClock
+                android:id="@+id/textClockDate"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:format12Hour="EEEE, dd MMM yyyy"
+                android:format24Hour="EEEE, dd MMM yyyy"
+                android:textColor="#A7F3D0"
+                android:textSize="16sp" />
+        </LinearLayout>
+
+        <!-- অপশন ১: পানি খাওয়ার অ্যালার্ম -->
+        <LinearLayout
+            android:id="@+id/btnWaterAlarm"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:format12Hour="EEEE, dd MMM yyyy"
-            android:format24Hour="EEEE, dd MMM yyyy"
-            android:textColor="#A7F3D0"
-            android:textSize="16sp" />
+            android:background="@drawable/bg_glass_card"
+            android:clickable="true"
+            android:focusable="true"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:padding="22dp"
+            android:layout_marginBottom="20dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="💧 পানি খাওয়ার অ্যালার্ম"
+                android:textColor="#FFFFFF"
+                android:textSize="20sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:text="একাধিক অ্যালার্ম ও রিংটোন সেট করুন"
+                android:textColor="#A7F3D0"
+                android:textSize="13sp" />
+        </LinearLayout>
+
+        <!-- অপশন ২: বয়স ক্যালকুলেটর -->
+        <LinearLayout
+            android:id="@+id/btnAgeCalc"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/bg_glass_card"
+            android:clickable="true"
+            android:focusable="true"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:padding="22dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="🎂 বয়স ক্যালকুলেটর"
+                android:textColor="#FFFFFF"
+                android:textSize="20sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:text="বছর, মাস, দিন এবং মোট দিন হিসাব করুন"
+                android:textColor="#A7F3D0"
+                android:textSize="13sp" />
+        </LinearLayout>
+
     </LinearLayout>
 
-    <!-- অপশন ১: পানি খাওয়ার অ্যালার্ম -->
-    <LinearLayout
-        android:id="@+id/btnWaterAlarm"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@drawable/bg_glass_card"
-        android:clickable="true"
-        android:focusable="true"
-        android:gravity="center"
-        android:orientation="vertical"
-        android:padding="22dp"
-        android:layout_marginBottom="20dp">
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="💧 পানি খাওয়ার অ্যালার্ম"
-            android:textColor="#FFFFFF"
-            android:textSize="20sp"
-            android:textStyle="bold" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="4dp"
-            android:text="একাধিক অ্যালার্ম ও রিংটোন সেট করুন"
-            android:textColor="#A7F3D0"
-            android:textSize="13sp" />
-    </LinearLayout>
-
-    <!-- অপশন ২: বয়স ক্যালকুলেটর -->
-    <LinearLayout
-        android:id="@+id/btnAgeCalc"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@drawable/bg_glass_card"
-        android:clickable="true"
-        android:focusable="true"
-        android:gravity="center"
-        android:orientation="vertical"
-        android:padding="22dp">
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="🎂 বয়স ক্যালকুলেটর"
-            android:textColor="#FFFFFF"
-            android:textSize="20sp"
-            android:textStyle="bold" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="4dp"
-            android:text="বছর, মাস, দিন এবং মোট দিন হিসাব করুন"
-            android:textColor="#A7F3D0"
-            android:textSize="13sp" />
-    </LinearLayout>
-
-</LinearLayout>
+</FrameLayout>
